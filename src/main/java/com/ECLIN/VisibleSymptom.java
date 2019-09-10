@@ -1,3 +1,5 @@
+package com.ECLIN;
+
 public enum VisibleSymptom {
     COLD,
     FLU,

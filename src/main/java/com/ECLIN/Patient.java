@@ -1,14 +1,26 @@
 package com.ECLIN;
 
-public class Client {
-    
-    String clientName;
-    int clientGravity;
-    VisibleSymptom clientVisibleSymptom;
-    
-    public Client(String name, int gravity, VisibleSymptom visibleSymptom) {
-        this.clientName = name;
-        this.clientGravity = gravity;
-        this.clientVisibleSymptom = visibleSymptom;
+public class Patient {
+
+    private String patientName;
+    private int patientGravity;
+    private VisibleSymptom patientVisibleSymptom;
+
+    public Patient(String name, int gravity, VisibleSymptom visibleSymptom) {
+        patientName = name;
+        patientGravity = gravity;
+        patientVisibleSymptom = visibleSymptom;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public int getPatientGravity() {
+        return patientGravity;
+    }
+
+    public VisibleSymptom getPatientVisibleSymptom() {
+        return patientVisibleSymptom;
     }
 }
