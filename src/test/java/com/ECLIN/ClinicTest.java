@@ -1,6 +1,9 @@
 package com.ECLIN;
 
 import static org.junit.Assert.*;
+
+import com.ECLIN.enums.ListType;
+import com.ECLIN.enums.VisibleSymptom;
 import org.junit.Test;
 
 public class ClinicTest {
@@ -8,51 +11,51 @@ public class ClinicTest {
     @Test
     public void onInitDoctorListMustBeEmpty() {
         Clinic clinic = new Clinic();
-        assertTrue(clinic.doctorListIsEmpty());
+        assertTrue(clinic.listIsEmpty(ListType.DOCTOR));
     }
 
     @Test
     public void onInitRadiologyListMustBeEmpty() {
         Clinic clinic = new Clinic();
-        assertTrue(clinic.radiologyListIsEmpty());
+        assertTrue(clinic.listIsEmpty(ListType.RADIOLOGY));
     }
 
     @Test
     public void afterPatientIsAddedDoctorListMustNotBeEmpty() {
         Clinic clinic = new Clinic();
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertFalse(clinic.doctorListIsEmpty());
+        assertFalse(clinic.listIsEmpty(ListType.DOCTOR));
     }
 
     @Test
     public void afterPatientWithBrokenBoneOrSprainIsAddedRadiologyListMustNotBeEmpty() {
         Clinic clinic = new Clinic();
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertFalse(clinic.radiologyListIsEmpty());
+        assertFalse(clinic.listIsEmpty(ListType.RADIOLOGY));
     }
 
     @Test
     public void onTriagePatientMustBeAddedToDoctorList() {
         Clinic clinic = new Clinic();
-        int numberOfPatientDoctor = clinic.getDoctorListNumberOfPatient();
+        int numberOfPatientDoctor = clinic.getListNumberOfPatient(ListType.DOCTOR);
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertEquals(numberOfPatientDoctor + 1, clinic.getDoctorListNumberOfPatient());
+        assertEquals(numberOfPatientDoctor + 1, clinic.getListNumberOfPatient(ListType.DOCTOR));
     }
 
     @Test
     public void onTriagePatientWithoutBrokenBoneOrSprainAreNotAddedToRadiologyList() {
         Clinic clinic = new Clinic();
-        int numberOfPatientRadiology = clinic.getRadiologyListNumberOfPatient();
+        int numberOfPatientRadiology = clinic.getListNumberOfPatient(ListType.RADIOLOGY);
         clinic.triagePatient("testPatient", 5, VisibleSymptom.CHEST_PAIN);
-        assertEquals(numberOfPatientRadiology, clinic.getRadiologyListNumberOfPatient());
+        assertEquals(numberOfPatientRadiology, clinic.getListNumberOfPatient(ListType.RADIOLOGY));
     }
 
     @Test
     public void onTriagePatientWithBrokenBoneOrSprainAreAddedToRadiologyList() {
         Clinic clinic = new Clinic();
-        int numberOfPatientRadiology = clinic.getRadiologyListNumberOfPatient();
+        int numberOfPatientRadiology = clinic.getListNumberOfPatient(ListType.RADIOLOGY);
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertEquals(numberOfPatientRadiology + 1, clinic.getRadiologyListNumberOfPatient());
+        assertEquals(numberOfPatientRadiology + 1, clinic.getListNumberOfPatient(ListType.RADIOLOGY));
     }
 
     @Test

@@ -3,8 +3,8 @@ package com.ECLIN;
 public class ECLIN1 {
 
     public static void main(String[] args) {
-        //com.ECLIN.TriageType doctorTriageType = com.ECLIN.TriageType.FIFO;
-        //com.ECLIN.TriageType radiologyTriageType = com.ECLIN.TriageType.FIFO;
+        //com.ECLIN.enums.TriageType doctorTriageType = com.ECLIN.enums.TriageType.FIFO;
+        //com.ECLIN.enums.TriageType radiologyTriageType = com.ECLIN.enums.TriageType.FIFO;
         System.out.println("Hello World!");
     }
 }

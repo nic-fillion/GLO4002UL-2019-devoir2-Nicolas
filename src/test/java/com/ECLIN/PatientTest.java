@@ -1,6 +1,8 @@
 package com.ECLIN;
 
 import static org.junit.Assert.*;
+
+import com.ECLIN.enums.VisibleSymptom;
 import org.junit.Test;
 
 public class PatientTest {

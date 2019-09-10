@@ -1,48 +1,33 @@
 package com.ECLIN;
 
-import java.util.LinkedList;
-import java.util.List;
+import com.ECLIN.enums.ListType;
+import com.ECLIN.enums.VisibleSymptom;
 
 public class Clinic {
-    private LinkedList<Patient> doctorList = new LinkedList<Patient>();
-    private LinkedList<Patient> radiologyList = new LinkedList<Patient>();
+
+    private ClinicDataModel dataModel = new ClinicDataModel();
 
     public Clinic() {}
 
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
         Patient newPatient = new Patient(name, gravity, visibleSymptom);
-        doctorList.addLast(newPatient);
+        dataModel.addNewPatientToList(newPatient, ListType.DOCTOR);
 
         VisibleSymptom symptom = newPatient.getPatientVisibleSymptom();
         if (symptom == VisibleSymptom.BROKEN_BONE || symptom == VisibleSymptom.SPRAIN) {
-            radiologyList.addLast(newPatient);
+            dataModel.addNewPatientToList(newPatient, ListType.RADIOLOGY);
         }
     }
 
-    public boolean doctorListIsEmpty() {
-        return (doctorList.size() == 0);
+    public boolean listIsEmpty(ListType listType) {
+        return dataModel.listIsEmpty(listType);
     }
 
-    public boolean radiologyListIsEmpty() {
-        return (radiologyList.size() == 0);
-    }
-
-    public int getDoctorListNumberOfPatient() {
-        return doctorList.size();
-    }
-
-    public int getRadiologyListNumberOfPatient() {
-        return radiologyList.size();
+    public int getListNumberOfPatient(ListType listType) {
+        return dataModel.getListNumberOfPatient(listType);
     }
 
     public Patient getFirstPatient(ListType listType) {
-        Patient nextPatient;
-        if (listType == ListType.DOCTOR) {
-            nextPatient = doctorList.removeFirst();
-        }
-        else {
-            nextPatient = radiologyList.removeFirst();
-        }
-        return nextPatient;
+        return dataModel.getFirstPatientOnList(listType);
     }
 }

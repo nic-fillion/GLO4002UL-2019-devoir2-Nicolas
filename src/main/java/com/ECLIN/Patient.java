@@ -1,5 +1,7 @@
 package com.ECLIN;
 
+import com.ECLIN.enums.VisibleSymptom;
+
 public class Patient {
 
     private String patientName;

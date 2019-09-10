@@ -1,4 +1,4 @@
-package com.ECLIN;
+package com.ECLIN.enums;
 
 public enum VisibleSymptom {
     COLD,
