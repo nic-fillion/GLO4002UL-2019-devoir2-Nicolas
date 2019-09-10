@@ -1,3 +1,5 @@
+package com.ECLIN;
+
 public class Client {
     
     String clientName;

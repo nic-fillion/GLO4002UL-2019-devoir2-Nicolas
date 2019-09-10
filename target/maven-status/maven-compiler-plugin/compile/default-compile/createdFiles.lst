@@ -1,4 +1,2 @@
-VisibleSymptom.class
-Clinic.class
-ECLIN1$VisibleSymptom.class
-ECLIN1$TriageType.class
+com\ECLIN\ListType.class
+com\ECLIN\Patient.class
