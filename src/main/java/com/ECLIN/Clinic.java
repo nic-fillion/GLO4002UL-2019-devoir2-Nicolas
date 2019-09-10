@@ -5,12 +5,12 @@ import com.ECLIN.enums.VisibleSymptom;
 
 public class Clinic {
 
-    private ClinicDataModel dataModel = new ClinicDataModel();
+    protected InstitutionDataModel dataModel = new InstitutionDataModel();
 
     public Clinic() {}
 
     public Clinic(TriageType triageType) {
-        dataModel.setClinicTriageType(triageType);
+        dataModel.setInstitutionTriageType(triageType);
     }
 
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
@@ -33,5 +33,9 @@ public class Clinic {
 
     public Patient getFirstPatient(ListType listType) {
         return dataModel.getFirstPatientOnList(listType);
+    }
+
+    public TriageType getTriageType() {
+        return dataModel.getClinicTriageType();
     }
 }

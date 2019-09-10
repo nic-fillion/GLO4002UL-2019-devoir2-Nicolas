@@ -89,5 +89,13 @@ public class ClinicTest {
         assertEquals("testSecondPatient", clinic.getFirstPatient(ListType.RADIOLOGY).getPatientName());
     }
 
+    @Test
+    public void onTriagePatientWithGravity1IsNotIncludedOnTheList() {
+        Clinic clinic = new Clinic(TriageType.GRAVITY);
+        clinic.triagePatient("testPatient", 1, VisibleSymptom.BROKEN_BONE);
+        assertEquals(0, clinic.getListNumberOfPatient(ListType.DOCTOR));
+        assertEquals(0, clinic.getListNumberOfPatient(ListType.RADIOLOGY));
+    }
+
 
 }

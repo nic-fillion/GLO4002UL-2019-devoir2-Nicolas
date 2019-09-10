@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class ClinicDataModelTest {
+public class InstitutionDataModelTest {
 
     @Test
     public void afterInitDataModelTriageTypeMustBeSet() {
-        ClinicDataModel dataModel = new ClinicDataModel();
+        InstitutionDataModel dataModel = new InstitutionDataModel();
         assertNotNull(dataModel.getClinicTriageType());
     }
 }
