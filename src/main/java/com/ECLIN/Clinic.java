@@ -9,6 +9,10 @@ public class Clinic {
 
     public Clinic() {}
 
+    public Clinic(TriageType triageType) {
+        dataModel.setClinicTriageType(triageType);
+    }
+
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
         Patient newPatient = new Patient(name, gravity, visibleSymptom);
         dataModel.addNewPatientToList(newPatient, ListType.DOCTOR);

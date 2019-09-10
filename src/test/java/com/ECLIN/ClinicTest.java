@@ -72,4 +72,22 @@ public class ClinicTest {
         clinic.triagePatient("testSecondPatient", 5, VisibleSymptom.BROKEN_BONE);
         assertNotEquals("testSecondPatient", clinic.getFirstPatient(ListType.DOCTOR).getPatientName());
     }
+
+    @Test
+    public void afterTriagePatientWithHighGravityIsFirstOnDoctorListWhenGRAVITY() {
+        Clinic clinic = new Clinic(TriageType.GRAVITY);
+        clinic.triagePatient("testPatient", 3, VisibleSymptom.BROKEN_BONE);
+        clinic.triagePatient("testSecondPatient", 7, VisibleSymptom.BROKEN_BONE);
+        assertEquals("testSecondPatient", clinic.getFirstPatient(ListType.DOCTOR).getPatientName());
+    }
+
+    @Test
+    public void afterTriagePatientWithHighGravityIsFirstOnRadiologyListWhenGRAVITY() {
+        Clinic clinic = new Clinic(TriageType.GRAVITY);
+        clinic.triagePatient("testPatient", 3, VisibleSymptom.BROKEN_BONE);
+        clinic.triagePatient("testSecondPatient", 7, VisibleSymptom.BROKEN_BONE);
+        assertEquals("testSecondPatient", clinic.getFirstPatient(ListType.RADIOLOGY).getPatientName());
+    }
+
+
 }

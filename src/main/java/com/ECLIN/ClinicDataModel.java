@@ -6,15 +6,45 @@ public class ClinicDataModel {
 
     private LinkedList<Patient> doctorList = new LinkedList<Patient>();
     private LinkedList<Patient> radiologyList = new LinkedList<Patient>();
+    private TriageType clinicTriageType = TriageType.FIFO;
 
     public ClinicDataModel() {}
 
+    public TriageType getClinicTriageType() {
+        return clinicTriageType;
+    }
+
+    public void setClinicTriageType(TriageType triageType) {
+        clinicTriageType = triageType;
+    }
+
     public void addNewPatientToList(Patient patient, ListType listType) {
-        if (listType == ListType.DOCTOR) {
-            doctorList.addLast(patient);
+        // sort with FIFO
+        if (clinicTriageType == TriageType.FIFO) {
+            if (listType == ListType.DOCTOR) {
+                doctorList.addLast(patient);
+            }
+            else if (listType == ListType.RADIOLOGY){
+                radiologyList.addLast(patient);
+            }
         }
-        else if (listType == ListType.RADIOLOGY){
-            radiologyList.addLast(patient);
+
+        // sort with GRAVITY
+        else if (clinicTriageType == TriageType.GRAVITY) {
+            if (listType == ListType.DOCTOR) {
+                if (patient.getPatientGravity() > 5) {
+                    doctorList.addFirst(patient);
+                } else {
+                    doctorList.addLast(patient);
+                }
+            }
+            else if (listType == ListType.RADIOLOGY){
+                if (patient.getPatientGravity() > 5) {
+                    radiologyList.addFirst(patient);
+                } else {
+                    radiologyList.addLast(patient);
+                }
+            }
         }
     }
 
