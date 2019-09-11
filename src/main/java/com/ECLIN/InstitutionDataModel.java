@@ -1,5 +1,7 @@
 package com.ECLIN;
 import com.ECLIN.enums.ListType;
+import com.ECLIN.enums.TriageType;
+
 import java.util.LinkedList;
 
 public class InstitutionDataModel {
@@ -20,7 +22,7 @@ public class InstitutionDataModel {
     }
 
     public void addNewPatientToList(Patient patient, ListType listType) {
-        if (patient.getPatientGravity() != 1) {
+        if (patient.getPatientGravity() > 1) {
 
             // sort with FIFO
             if (clinicTriageType == TriageType.FIFO) {

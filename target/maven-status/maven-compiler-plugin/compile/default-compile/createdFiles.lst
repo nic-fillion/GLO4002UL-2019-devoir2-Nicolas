@@ -1,4 +1,4 @@
 com\ECLIN\InstitutionDataModel.class
-com\ECLIN\TriageType.class
 com\ECLIN\Patient.class
+com\ECLIN\enums\TriageType.class
 com\ECLIN\CommunityCenter.class

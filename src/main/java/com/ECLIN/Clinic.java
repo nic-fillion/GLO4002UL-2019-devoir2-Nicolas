@@ -1,6 +1,7 @@
 package com.ECLIN;
 
 import com.ECLIN.enums.ListType;
+import com.ECLIN.enums.TriageType;
 import com.ECLIN.enums.VisibleSymptom;
 
 public class Clinic {
