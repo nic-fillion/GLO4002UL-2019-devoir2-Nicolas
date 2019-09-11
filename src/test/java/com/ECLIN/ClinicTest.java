@@ -66,7 +66,7 @@ public class ClinicTest {
     }
 
     @Test
-    public void onTriageSecondPatientIsNotFirstOnDoctorList() {
+    public void onTriageSecondPatientIsNotFirstOnDoctorListWhenFIFO() {
         Clinic clinic = new Clinic();
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
         clinic.triagePatient("testSecondPatient", 5, VisibleSymptom.BROKEN_BONE);
@@ -90,8 +90,8 @@ public class ClinicTest {
     }
 
     @Test
-    public void onTriagePatientWithGravity1IsNotIncludedOnTheList() {
-        Clinic clinic = new Clinic(TriageType.GRAVITY);
+    public void onTriagePatientWithGravity1IsNotIncludedOnTheLists() {
+        Clinic clinic = new Clinic();
         clinic.triagePatient("testPatient", 1, VisibleSymptom.BROKEN_BONE);
         assertEquals(0, clinic.getListNumberOfPatient(ListType.DOCTOR));
         assertEquals(0, clinic.getListNumberOfPatient(ListType.RADIOLOGY));
