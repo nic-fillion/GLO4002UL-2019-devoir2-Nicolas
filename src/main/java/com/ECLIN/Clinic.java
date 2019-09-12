@@ -1,42 +1,31 @@
 package com.ECLIN;
 
-import com.ECLIN.enums.ListType;
+import com.ECLIN.datamodel.DataModel;
+import com.ECLIN.datamodel.DoctorDataModel;
+import com.ECLIN.datamodel.RadiologyDataModel;
 import com.ECLIN.enums.TriageType;
 import com.ECLIN.enums.VisibleSymptom;
 
-public class Clinic {
+public class Clinic extends HealthInstitution{
 
-    protected InstitutionDataModel dataModel = new InstitutionDataModel();
+    private DoctorDataModel doctorDataModel = new DoctorDataModel();
+    private RadiologyDataModel radiologyDataModel = new RadiologyDataModel();
 
     public Clinic() {}
 
     public Clinic(TriageType triageType) {
-        dataModel.setInstitutionTriageType(triageType);
+
+        doctorDataModel.setTriageType(triageType);
+        radiologyDataModel.setTriageType(triageType);
     }
 
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
         Patient newPatient = new Patient(name, gravity, visibleSymptom);
-        dataModel.addNewPatientToList(newPatient, ListType.DOCTOR);
+        doctorDataModel.addNewPatientToList(newPatient);
 
         VisibleSymptom symptom = newPatient.getPatientVisibleSymptom();
         if (symptom == VisibleSymptom.BROKEN_BONE || symptom == VisibleSymptom.SPRAIN) {
-            dataModel.addNewPatientToList(newPatient, ListType.RADIOLOGY);
+            radiologyDataModel.addNewPatientToList(newPatient);
         }
-    }
-
-    public boolean listIsEmpty(ListType listType) {
-        return dataModel.listIsEmpty(listType);
-    }
-
-    public int getListNumberOfPatient(ListType listType) {
-        return dataModel.getListNumberOfPatient(listType);
-    }
-
-    public Patient getFirstPatient(ListType listType) {
-        return dataModel.getFirstPatientOnList(listType);
-    }
-
-    public TriageType getTriageType() {
-        return dataModel.getClinicTriageType();
     }
 }

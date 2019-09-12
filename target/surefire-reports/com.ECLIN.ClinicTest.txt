@@ -1,4 +1,52 @@
 -------------------------------------------------------------------------------
 Test set: com.ECLIN.ClinicTest
 -------------------------------------------------------------------------------
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 s - in com.ECLIN.ClinicTest
+Tests run: 12, Failures: 0, Errors: 12, Skipped: 0, Time elapsed: 0.046 s <<< FAILURE! - in com.ECLIN.ClinicTest
+onTriagePatientMustBeAddedToDoctorList(com.ECLIN.ClinicTest)  Time elapsed: 0.01 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.getListNumberOfPatient(Lcom/ECLIN/enums/ListType;)I
+	at com.ECLIN.ClinicTest.onTriagePatientMustBeAddedToDoctorList(ClinicTest.java:41)
+
+afterTriagePatientWithHighGravityIsFirstOnRadiologyListWhenGRAVITY(com.ECLIN.ClinicTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.getFirstPatient(Lcom/ECLIN/enums/ListType;)Lcom/ECLIN/Patient;
+	at com.ECLIN.ClinicTest.afterTriagePatientWithHighGravityIsFirstOnRadiologyListWhenGRAVITY(ClinicTest.java:90)
+
+afterPatientIsAddedDoctorListMustNotBeEmpty(com.ECLIN.ClinicTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.listIsEmpty(Lcom/ECLIN/enums/ListType;)Z
+	at com.ECLIN.ClinicTest.afterPatientIsAddedDoctorListMustNotBeEmpty(ClinicTest.java:28)
+
+onTriageSecondPatientIsNotFirstOnDoctorListWhenFIFO(com.ECLIN.ClinicTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.getFirstPatient(Lcom/ECLIN/enums/ListType;)Lcom/ECLIN/Patient;
+	at com.ECLIN.ClinicTest.onTriageSecondPatientIsNotFirstOnDoctorListWhenFIFO(ClinicTest.java:74)
+
+onTriagePatientWithEmptyDoctorListIsFirst(com.ECLIN.ClinicTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.getFirstPatient(Lcom/ECLIN/enums/ListType;)Lcom/ECLIN/Patient;
+	at com.ECLIN.ClinicTest.onTriagePatientWithEmptyDoctorListIsFirst(ClinicTest.java:66)
+
+afterPatientWithBrokenBoneOrSprainIsAddedRadiologyListMustNotBeEmpty(com.ECLIN.ClinicTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.listIsEmpty(Lcom/ECLIN/enums/ListType;)Z
+	at com.ECLIN.ClinicTest.afterPatientWithBrokenBoneOrSprainIsAddedRadiologyListMustNotBeEmpty(ClinicTest.java:35)
+
+onTriagePatientWithBrokenBoneOrSprainAreAddedToRadiologyList(com.ECLIN.ClinicTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.getListNumberOfPatient(Lcom/ECLIN/enums/ListType;)I
+	at com.ECLIN.ClinicTest.onTriagePatientWithBrokenBoneOrSprainAreAddedToRadiologyList(ClinicTest.java:57)
+
+onInitDoctorListMustBeEmpty(com.ECLIN.ClinicTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.listIsEmpty(Lcom/ECLIN/enums/ListType;)Z
+	at com.ECLIN.ClinicTest.onInitDoctorListMustBeEmpty(ClinicTest.java:15)
+
+afterTriagePatientWithHighGravityIsFirstOnDoctorListWhenGRAVITY(com.ECLIN.ClinicTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.getFirstPatient(Lcom/ECLIN/enums/ListType;)Lcom/ECLIN/Patient;
+	at com.ECLIN.ClinicTest.afterTriagePatientWithHighGravityIsFirstOnDoctorListWhenGRAVITY(ClinicTest.java:82)
+
+onTriagePatientWithoutBrokenBoneOrSprainAreNotAddedToRadiologyList(com.ECLIN.ClinicTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.getListNumberOfPatient(Lcom/ECLIN/enums/ListType;)I
+	at com.ECLIN.ClinicTest.onTriagePatientWithoutBrokenBoneOrSprainAreNotAddedToRadiologyList(ClinicTest.java:49)
+
+onInitRadiologyListMustBeEmpty(com.ECLIN.ClinicTest)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.listIsEmpty(Lcom/ECLIN/enums/ListType;)Z
+	at com.ECLIN.ClinicTest.onInitRadiologyListMustBeEmpty(ClinicTest.java:21)
+
+onTriagePatientWithGravity1IsNotIncludedOnTheLists(com.ECLIN.ClinicTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoSuchMethodError: com.ECLIN.Clinic.getListNumberOfPatient(Lcom/ECLIN/enums/ListType;)I
+	at com.ECLIN.ClinicTest.onTriagePatientWithGravity1IsNotIncludedOnTheLists(ClinicTest.java:97)
+
