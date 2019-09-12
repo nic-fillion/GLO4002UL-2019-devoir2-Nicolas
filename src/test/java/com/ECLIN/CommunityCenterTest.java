@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import com.ECLIN.enums.ListType;
 import com.ECLIN.enums.TriageType;
 import com.ECLIN.enums.VisibleSymptom;
+import com.ECLIN.healthInstitution.CommunityCenter;
 import org.junit.Test;
 
 public class CommunityCenterTest {

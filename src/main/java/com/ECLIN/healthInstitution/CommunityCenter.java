@@ -1,9 +1,10 @@
-package com.ECLIN;
+package com.ECLIN.healthInstitution;
 
+import com.ECLIN.Patient;
 import com.ECLIN.datamodel.NurseDataModel;
-import com.ECLIN.enums.ListType;
 import com.ECLIN.enums.TriageType;
 import com.ECLIN.enums.VisibleSymptom;
+import com.ECLIN.healthInstitution.HealthInstitution;
 
 public class CommunityCenter extends HealthInstitution {
 

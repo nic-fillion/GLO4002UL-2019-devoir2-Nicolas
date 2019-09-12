@@ -1,12 +1,13 @@
-package com.ECLIN;
+package com.ECLIN.healthInstitution;
 
-import com.ECLIN.datamodel.DataModel;
+import com.ECLIN.Patient;
 import com.ECLIN.datamodel.DoctorDataModel;
 import com.ECLIN.datamodel.RadiologyDataModel;
 import com.ECLIN.enums.TriageType;
 import com.ECLIN.enums.VisibleSymptom;
+import com.ECLIN.healthInstitution.HealthInstitution;
 
-public class Clinic extends HealthInstitution{
+public class Clinic extends HealthInstitution {
 
     private DoctorDataModel doctorDataModel = new DoctorDataModel();
     private RadiologyDataModel radiologyDataModel = new RadiologyDataModel();

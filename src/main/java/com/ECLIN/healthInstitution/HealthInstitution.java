@@ -1,5 +1,6 @@
-package com.ECLIN;
+package com.ECLIN.healthInstitution;
 
+import com.ECLIN.Patient;
 import com.ECLIN.datamodel.DataModel;
 import com.ECLIN.enums.TriageType;
 
