@@ -1,8 +1,6 @@
 com\ECLIN\datamodel\DataModel.class
-com\ECLIN\datamodel\DoctorDataModel.class
-com\ECLIN\datamodel\RadiologyDataModel.class
-com\ECLIN\datamodel\NurseDataModel.class
+com\ECLIN\healthInstitution\HealthInstitution.class
 com\ECLIN\Patient.class
 com\ECLIN\enums\TriageType.class
-com\ECLIN\HealthInstitution.class
-com\ECLIN\CommunityCenter.class
+com\ECLIN\healthInstitution\Clinic.class
+com\ECLIN\healthInstitution\CommunityCenter.class

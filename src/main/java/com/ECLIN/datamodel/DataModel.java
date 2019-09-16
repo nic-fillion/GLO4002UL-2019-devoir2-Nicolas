@@ -3,17 +3,54 @@ package com.ECLIN.datamodel;
 import com.ECLIN.Patient;
 import com.ECLIN.enums.TriageType;
 
-public interface DataModel {
+import java.util.LinkedList;
 
-    TriageType getTriageType();
+public class DataModel {
 
-    void setTriageType(TriageType triageType);
+    private LinkedList<Patient> patientList = new LinkedList<Patient>();
+    private TriageType institutionTriageType;
 
-    void addNewPatientToList(Patient patient);
+    public DataModel(TriageType triageType) {
+        setTriageType(triageType);
+    }
 
-    boolean listIsEmpty();
+    public TriageType getTriageType() {
+        return institutionTriageType;
+    }
 
-    int getListNumberOfPatient();
+    public void setTriageType(TriageType triageType) {
+        institutionTriageType = triageType;
+    }
 
-    Patient getFirstPatientOnList();
+    public void addNewPatientToList(Patient patient) {
+        if (patient.getPatientGravity() > 1) {
+
+            // sort with FIFO
+            if (institutionTriageType == TriageType.FIFO) {
+                patientList.addLast(patient);
+            }
+
+            // sort with GRAVITY
+            else if (institutionTriageType == TriageType.GRAVITY) {
+                if (patient.getPatientGravity() > 5) {
+                    patientList.addFirst(patient);
+                } else {
+                    patientList.addLast(patient);
+                }
+            }
+        }
+    }
+
+    public boolean listIsEmpty() {
+        return patientList.size() == 0;
+    }
+
+    public int getListNumberOfPatient() {
+        return patientList.size();
+    }
+
+    public Patient getFirstPatientOnList() {
+        return patientList.removeFirst();
+    }
 }
+

@@ -1,23 +1,18 @@
 package com.ECLIN.healthInstitution;
 
 import com.ECLIN.Patient;
-import com.ECLIN.datamodel.DoctorDataModel;
-import com.ECLIN.datamodel.RadiologyDataModel;
+import com.ECLIN.datamodel.DataModel;
+import com.ECLIN.enums.ListType;
 import com.ECLIN.enums.TriageType;
 import com.ECLIN.enums.VisibleSymptom;
-import com.ECLIN.healthInstitution.HealthInstitution;
 
 public class Clinic extends HealthInstitution {
 
-    private DoctorDataModel doctorDataModel = new DoctorDataModel();
-    private RadiologyDataModel radiologyDataModel = new RadiologyDataModel();
-
-    public Clinic() {}
+    private DataModel doctorDataModel = new DataModel(institutionTriageType);
+    private DataModel radiologyDataModel = new DataModel(institutionTriageType);
 
     public Clinic(TriageType triageType) {
-
-        doctorDataModel.setTriageType(triageType);
-        radiologyDataModel.setTriageType(triageType);
+        super(triageType);
     }
 
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
@@ -28,5 +23,12 @@ public class Clinic extends HealthInstitution {
         if (symptom == VisibleSymptom.BROKEN_BONE || symptom == VisibleSymptom.SPRAIN) {
             radiologyDataModel.addNewPatientToList(newPatient);
         }
+    }
+
+    public DataModel getDataModel(ListType listType) {
+        if (listType == ListType.DOCTOR) {
+            return doctorDataModel;
+        }
+        else return radiologyDataModel;
     }
 }

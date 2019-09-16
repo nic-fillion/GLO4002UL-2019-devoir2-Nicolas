@@ -12,67 +12,67 @@ public class ClinicTest {
 
     @Test
     public void onInitDoctorListMustBeEmpty() {
-        Clinic clinic = new Clinic();
-        assertTrue(clinic.listIsEmpty(ListType.DOCTOR));
+        Clinic clinic = new Clinic(TriageType.FIFO);
+        assertTrue(clinic.listIsEmpty(clinic.getDataModel(ListType.DOCTOR)));
     }
 
     @Test
     public void onInitRadiologyListMustBeEmpty() {
-        Clinic clinic = new Clinic();
-        assertTrue(clinic.listIsEmpty(ListType.RADIOLOGY));
+        Clinic clinic = new Clinic(TriageType.FIFO);
+        assertTrue(clinic.listIsEmpty(clinic.getDataModel(ListType.RADIOLOGY)));
     }
 
     @Test
     public void afterPatientIsAddedDoctorListMustNotBeEmpty() {
-        Clinic clinic = new Clinic();
+        Clinic clinic = new Clinic(TriageType.FIFO);
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertFalse(clinic.listIsEmpty(ListType.DOCTOR));
+        assertFalse(clinic.listIsEmpty(clinic.getDataModel(ListType.DOCTOR)));
     }
 
     @Test
     public void afterPatientWithBrokenBoneOrSprainIsAddedRadiologyListMustNotBeEmpty() {
-        Clinic clinic = new Clinic();
+        Clinic clinic = new Clinic(TriageType.FIFO);
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertFalse(clinic.listIsEmpty(ListType.RADIOLOGY));
+        assertFalse(clinic.listIsEmpty(clinic.getDataModel(ListType.RADIOLOGY)));
     }
 
     @Test
     public void onTriagePatientMustBeAddedToDoctorList() {
-        Clinic clinic = new Clinic();
-        int numberOfPatientDoctor = clinic.getListNumberOfPatient(ListType.DOCTOR);
+        Clinic clinic = new Clinic(TriageType.FIFO);
+        int numberOfPatientDoctor = clinic.getListNumberOfPatient(clinic.getDataModel(ListType.DOCTOR));
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertEquals(numberOfPatientDoctor + 1, clinic.getListNumberOfPatient(ListType.DOCTOR));
+        assertEquals(numberOfPatientDoctor + 1, clinic.getListNumberOfPatient(clinic.getDataModel(ListType.DOCTOR)));
     }
 
     @Test
     public void onTriagePatientWithoutBrokenBoneOrSprainAreNotAddedToRadiologyList() {
-        Clinic clinic = new Clinic();
-        int numberOfPatientRadiology = clinic.getListNumberOfPatient(ListType.RADIOLOGY);
+        Clinic clinic = new Clinic(TriageType.FIFO);
+        int numberOfPatientRadiology = clinic.getListNumberOfPatient(clinic.getDataModel(ListType.RADIOLOGY));
         clinic.triagePatient("testPatient", 5, VisibleSymptom.CHEST_PAIN);
-        assertEquals(numberOfPatientRadiology, clinic.getListNumberOfPatient(ListType.RADIOLOGY));
+        assertEquals(numberOfPatientRadiology, clinic.getListNumberOfPatient(clinic.getDataModel(ListType.RADIOLOGY)));
     }
 
     @Test
     public void onTriagePatientWithBrokenBoneOrSprainAreAddedToRadiologyList() {
-        Clinic clinic = new Clinic();
-        int numberOfPatientRadiology = clinic.getListNumberOfPatient(ListType.RADIOLOGY);
+        Clinic clinic = new Clinic(TriageType.FIFO);
+        int numberOfPatientRadiology = clinic.getListNumberOfPatient(clinic.getDataModel(ListType.RADIOLOGY));
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertEquals(numberOfPatientRadiology + 1, clinic.getListNumberOfPatient(ListType.RADIOLOGY));
+        assertEquals(numberOfPatientRadiology + 1, clinic.getListNumberOfPatient(clinic.getDataModel(ListType.RADIOLOGY)));
     }
 
     @Test
     public void onTriagePatientWithEmptyDoctorListIsFirst() {
-        Clinic clinic = new Clinic();
+        Clinic clinic = new Clinic(TriageType.FIFO);
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertEquals("testPatient", clinic.getFirstPatient(ListType.DOCTOR).getPatientName());
+        assertEquals("testPatient", clinic.getFirstPatient(clinic.getDataModel(ListType.DOCTOR)).getPatientName());
     }
 
     @Test
     public void onTriageSecondPatientIsNotFirstOnDoctorListWhenFIFO() {
-        Clinic clinic = new Clinic();
+        Clinic clinic = new Clinic(TriageType.FIFO);
         clinic.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
         clinic.triagePatient("testSecondPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertNotEquals("testSecondPatient", clinic.getFirstPatient(ListType.DOCTOR).getPatientName());
+        assertNotEquals("testSecondPatient", clinic.getFirstPatient(clinic.getDataModel(ListType.DOCTOR)).getPatientName());
     }
 
     @Test
@@ -80,7 +80,7 @@ public class ClinicTest {
         Clinic clinic = new Clinic(TriageType.GRAVITY);
         clinic.triagePatient("testPatient", 3, VisibleSymptom.BROKEN_BONE);
         clinic.triagePatient("testSecondPatient", 7, VisibleSymptom.BROKEN_BONE);
-        assertEquals("testSecondPatient", clinic.getFirstPatient(ListType.DOCTOR).getPatientName());
+        assertEquals("testSecondPatient", clinic.getFirstPatient(clinic.getDataModel(ListType.DOCTOR)).getPatientName());
     }
 
     @Test
@@ -88,15 +88,15 @@ public class ClinicTest {
         Clinic clinic = new Clinic(TriageType.GRAVITY);
         clinic.triagePatient("testPatient", 3, VisibleSymptom.BROKEN_BONE);
         clinic.triagePatient("testSecondPatient", 7, VisibleSymptom.BROKEN_BONE);
-        assertEquals("testSecondPatient", clinic.getFirstPatient(ListType.RADIOLOGY).getPatientName());
+        assertEquals("testSecondPatient", clinic.getFirstPatient(clinic.getDataModel(ListType.RADIOLOGY)).getPatientName());
     }
 
     @Test
     public void onTriagePatientWithGravity1IsNotIncludedOnTheLists() {
-        Clinic clinic = new Clinic();
+        Clinic clinic = new Clinic(TriageType.FIFO);
         clinic.triagePatient("testPatient", 1, VisibleSymptom.BROKEN_BONE);
-        assertEquals(0, clinic.getListNumberOfPatient(ListType.DOCTOR));
-        assertEquals(0, clinic.getListNumberOfPatient(ListType.RADIOLOGY));
+        assertEquals(0, clinic.getListNumberOfPatient(clinic.getDataModel(ListType.DOCTOR)));
+        assertEquals(0, clinic.getListNumberOfPatient(clinic.getDataModel(ListType.RADIOLOGY)));
     }
 
 

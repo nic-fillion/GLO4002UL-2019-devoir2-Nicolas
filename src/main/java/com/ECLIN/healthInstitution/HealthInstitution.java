@@ -6,6 +6,12 @@ import com.ECLIN.enums.TriageType;
 
 public abstract class HealthInstitution {
 
+    protected TriageType institutionTriageType;
+
+    private void setTriageType(TriageType triageType) { institutionTriageType = triageType; }
+
+    public HealthInstitution(TriageType triageType) { setTriageType(triageType); }
+
     public boolean listIsEmpty(DataModel dataModel) {
         return dataModel.listIsEmpty();
     }

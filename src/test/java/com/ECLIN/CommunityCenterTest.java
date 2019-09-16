@@ -12,8 +12,8 @@ public class CommunityCenterTest {
 
     @Test
     public void onInitNurseListIsEmpty() {
-        CommunityCenter communityCenter = new CommunityCenter();
-        assertEquals(0, communityCenter.getListNumberOfPatient(ListType.NURSE));
+        CommunityCenter communityCenter = new CommunityCenter(TriageType.FIFO);
+        assertEquals(0, communityCenter.getListNumberOfPatient(communityCenter.getDataModel()));
     }
 
     @Test
