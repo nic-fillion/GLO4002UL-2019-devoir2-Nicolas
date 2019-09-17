@@ -2,10 +2,11 @@ package com.ECLIN.healthInstitution;
 
 import com.ECLIN.Patient;
 import com.ECLIN.datamodel.DataModel;
+import com.ECLIN.enums.ListType;
 import com.ECLIN.enums.TriageType;
 import com.ECLIN.enums.VisibleSymptom;
 
-public class CommunityCenter {
+public class CommunityCenter implements HealthInstitution {
 
     private TriageType institutionTriageType;
     private DataModel nurseDataModel;
@@ -15,8 +16,6 @@ public class CommunityCenter {
         nurseDataModel = new DataModel(triageType);
     }
 
-    private void setTriageType(TriageType triageType) { institutionTriageType = triageType; }
-
     public TriageType getTriageType() { return institutionTriageType; }
 
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
@@ -24,7 +23,7 @@ public class CommunityCenter {
         nurseDataModel.addNewPatientToList(newPatient);
     }
 
-    public DataModel getDataModel() {
+    public DataModel getDataModel(ListType listType) {
         return nurseDataModel;
     }
 }

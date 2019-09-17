@@ -6,7 +6,7 @@ import com.ECLIN.enums.ListType;
 import com.ECLIN.enums.TriageType;
 import com.ECLIN.enums.VisibleSymptom;
 
-public class Clinic implements  HealthInstitution{
+public class Clinic implements HealthInstitution{
 
     private TriageType institutionTriageType;
     private DataModel doctorDataModel;
@@ -17,8 +17,6 @@ public class Clinic implements  HealthInstitution{
         doctorDataModel = new DataModel(triageType);
         radiologyDataModel = new DataModel(triageType);
     }
-
-    private void setTriageType(TriageType triageType) { institutionTriageType = triageType; }
 
     public TriageType getTriageType() { return institutionTriageType; }
 
