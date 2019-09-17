@@ -6,14 +6,21 @@ import com.ECLIN.enums.ListType;
 import com.ECLIN.enums.TriageType;
 import com.ECLIN.enums.VisibleSymptom;
 
-public class Clinic extends HealthInstitution {
+public class Clinic implements  HealthInstitution{
 
-    private DataModel doctorDataModel = new DataModel(institutionTriageType);
-    private DataModel radiologyDataModel = new DataModel(institutionTriageType);
+    private TriageType institutionTriageType;
+    private DataModel doctorDataModel;
+    private DataModel radiologyDataModel;
 
     public Clinic(TriageType triageType) {
-        super(triageType);
+        institutionTriageType = triageType;
+        doctorDataModel = new DataModel(triageType);
+        radiologyDataModel = new DataModel(triageType);
     }
+
+    private void setTriageType(TriageType triageType) { institutionTriageType = triageType; }
+
+    public TriageType getTriageType() { return institutionTriageType; }
 
     public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom) {
         Patient newPatient = new Patient(name, gravity, visibleSymptom);

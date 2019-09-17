@@ -1,28 +1,16 @@
 package com.ECLIN.healthInstitution;
 
-import com.ECLIN.Patient;
 import com.ECLIN.datamodel.DataModel;
+import com.ECLIN.enums.ListType;
 import com.ECLIN.enums.TriageType;
+import com.ECLIN.enums.VisibleSymptom;
 
-public abstract class HealthInstitution {
+public interface HealthInstitution {
 
-    protected TriageType institutionTriageType;
+    public TriageType getTriageType();
 
-    private void setTriageType(TriageType triageType) { institutionTriageType = triageType; }
+    public void triagePatient(String name, int gravity, VisibleSymptom visibleSymptom);
 
-    public TriageType getTriageType() { return institutionTriageType; }
+    public DataModel getDataModel(ListType listType);
 
-    public HealthInstitution(TriageType triageType) { setTriageType(triageType); }
-
-    public boolean listIsEmpty(DataModel dataModel) {
-        return dataModel.listIsEmpty();
-    }
-
-    public int getListNumberOfPatient(DataModel dataModel) {
-        return dataModel.getListNumberOfPatient();
-    }
-
-    public Patient getFirstPatient(DataModel dataModel) {
-        return dataModel.getFirstPatientOnList();
-    }
 }

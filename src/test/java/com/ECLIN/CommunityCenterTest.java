@@ -13,34 +13,28 @@ public class CommunityCenterTest {
     @Test
     public void onInitNurseListIsEmpty() {
         CommunityCenter communityCenter = new CommunityCenter(TriageType.FIFO);
-        assertEquals(0, communityCenter.getListNumberOfPatient(communityCenter.getDataModel()));
+        assertEquals(0, communityCenter.getDataModel().getListNumberOfPatient());
     }
 
     @Test
     public void afterTriageNurseListIsNoLongerEmpty() {
-        CommunityCenter communityCenter = new CommunityCenter();
+        CommunityCenter communityCenter = new CommunityCenter(TriageType.FIFO);
         communityCenter.triagePatient("testSecondPatient", 3, VisibleSymptom.BROKEN_BONE);
-        assertEquals(1, communityCenter.getListNumberOfPatient(ListType.NURSE));
+        assertEquals(1, communityCenter.getDataModel().getListNumberOfPatient());
     }
 
     @Test
-    public void afterInitTriageTypeMustBeFIFOWhenNoParamConstructor() {
-        CommunityCenter communityCenter = new CommunityCenter();
-        assertEquals(TriageType.FIFO, communityCenter.getTriageType());
-    }
-
-    @Test
-    public void afterInitTriageTypeMustBeGRAVITYWhenThisParamInConstructor() {
+    public void afterInitTriageTypeMustBeSetAccordingToParameter() {
         CommunityCenter communityCenter = new CommunityCenter(TriageType.GRAVITY);
         assertEquals(TriageType.GRAVITY, communityCenter.getTriageType());
     }
 
     @Test
     public void onTriagePatientMustBeAddedToNurseList() {
-        CommunityCenter communityCenter = new CommunityCenter();
-        int numberOfPatientNurse = communityCenter.getListNumberOfPatient(ListType.NURSE);
+        CommunityCenter communityCenter = new CommunityCenter(TriageType.FIFO);
+        int numberOfPatientNurse = communityCenter.getDataModel().getListNumberOfPatient();
         communityCenter.triagePatient("testPatient", 5, VisibleSymptom.BROKEN_BONE);
-        assertEquals(numberOfPatientNurse + 1, communityCenter.getListNumberOfPatient(ListType.NURSE));
+        assertEquals(numberOfPatientNurse + 1, communityCenter.getDataModel().getListNumberOfPatient());
     }
 
     @Test
@@ -48,7 +42,7 @@ public class CommunityCenterTest {
         CommunityCenter communityCenter = new CommunityCenter(TriageType.GRAVITY);
         communityCenter.triagePatient("testPatient", 3, VisibleSymptom.BROKEN_BONE);
         communityCenter.triagePatient("testSecondPatient", 7, VisibleSymptom.BROKEN_BONE);
-        assertEquals("testSecondPatient", communityCenter.getFirstPatient(ListType.NURSE).getPatientName());
+        assertEquals("testSecondPatient", communityCenter.getDataModel().getFirstPatientOnList().getPatientName());
     }
 
     @Test
@@ -56,13 +50,13 @@ public class CommunityCenterTest {
         CommunityCenter communityCenter = new CommunityCenter(TriageType.GRAVITY);
         communityCenter.triagePatient("testPatient", 3, VisibleSymptom.BROKEN_BONE);
         communityCenter.triagePatient("testSecondPatient", 3, VisibleSymptom.BROKEN_BONE);
-        assertNotEquals("testSecondPatient", communityCenter.getFirstPatient(ListType.NURSE).getPatientName());
+        assertNotEquals("testSecondPatient", communityCenter.getDataModel().getFirstPatientOnList().getPatientName());
     }
 
     @Test
     public void onTriagePatientWithGravity1IsNotIncludedOnTheList() {
-        CommunityCenter communityCenter = new CommunityCenter();
+        CommunityCenter communityCenter = new CommunityCenter(TriageType.FIFO);
         communityCenter.triagePatient("testPatient", 1, VisibleSymptom.BROKEN_BONE);
-        assertEquals(0, communityCenter.getListNumberOfPatient(ListType.NURSE));
+        assertEquals(0, communityCenter.getDataModel().getListNumberOfPatient());
     }
 }
