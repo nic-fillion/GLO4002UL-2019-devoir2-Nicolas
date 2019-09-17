@@ -9,7 +9,7 @@ import org.junit.Test;
 public class DataModelTest {
 
     @Test
-    public void afterInitDataModelTriageTypeMustBeSet() {
+    public void afterInit_thenDataModelTriageTypeMustBeSet() {
         DataModel dataModel = new DataModel(TriageType.FIFO);
         assertNotNull(dataModel.getTriageType());
     }

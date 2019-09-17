@@ -10,6 +10,8 @@ public abstract class HealthInstitution {
 
     private void setTriageType(TriageType triageType) { institutionTriageType = triageType; }
 
+    public TriageType getTriageType() { return institutionTriageType; }
+
     public HealthInstitution(TriageType triageType) { setTriageType(triageType); }
 
     public boolean listIsEmpty(DataModel dataModel) {
@@ -23,9 +25,4 @@ public abstract class HealthInstitution {
     public Patient getFirstPatient(DataModel dataModel) {
         return dataModel.getFirstPatientOnList();
     }
-
-    public TriageType getTriageType(DataModel dataModel) {
-        return dataModel.getTriageType();
-    }
-
 }
