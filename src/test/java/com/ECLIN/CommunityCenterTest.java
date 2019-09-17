@@ -17,13 +17,6 @@ public class CommunityCenterTest {
     }
 
     @Test
-    public void afterTriageNurseListIsNoLongerEmpty() {
-        CommunityCenter communityCenter = new CommunityCenter(TriageType.FIFO);
-        communityCenter.triagePatient("testSecondPatient", 3, VisibleSymptom.BROKEN_BONE);
-        assertEquals(1, communityCenter.getDataModel(ListType.NURSE).getListNumberOfPatient());
-    }
-
-    @Test
     public void afterInitTriageTypeMustBeSetAccordingToParameter() {
         CommunityCenter communityCenter = new CommunityCenter(TriageType.GRAVITY);
         assertEquals(TriageType.GRAVITY, communityCenter.getTriageType());
